@@ -55,6 +55,11 @@ countriess = countriess.groupby("Country").agg("count")
 countriess = countriess.reset_index()
 countriess = countriess.sort_values(by="Youtuber", ascending=False).head()
 
+# Define the DataFrame df_views30 globally
+df_views30 = df[["Youtuber", "video_views_last_30_days_per_millon"]]
+df_views30.loc[:, "Rank"] = df_views30["video_views_last_30_days_per_millon"].rank(ascending=False)
+df_views30 = df_views30[df_views30["Rank"] <= 10].sort_values(by=["Rank"])
+
 # Create a Plotly Express bar chart
 fig2 = px.bar(
     df_views30, 
@@ -105,4 +110,4 @@ app.layout = html.Div(
 )
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8057)
+    app.run_server(debug=True, port=8070)

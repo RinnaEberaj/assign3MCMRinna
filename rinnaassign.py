@@ -2,11 +2,6 @@
 from dash import Dash, html, dcc, Input, Output
 import plotly.express as px
 import pandas as pd
-import matplotlib.pyplot as plt
-#from matplotlib.colors import LinearSegmentedColormap
-import numpy as np
-from PIL import Image
-import io
 
 app = Dash(__name__)
 server = app.server
